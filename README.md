@@ -3,7 +3,7 @@
 - **To clone the project**
 
 ```
-git clone git@github.com:djmaluy/TestTask_BramblingTech.git
+git clone git@github.com:djmaluy/TestTask_BramblingTech
 ```
 
 - **Go to the folder**
