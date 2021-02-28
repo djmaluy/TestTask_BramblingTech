@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { TableData } from "./components/table/TableData";
+import "./App.css";
+import { CardView } from "./components/view/CardView";
+import { ChangeView } from "./components/view/ChangeView";
+import { Search } from "./components/search/Search";
+import { useSelector, useDispatch } from "react-redux";
+import { getSearchResult, getUsers, getView } from "./redux/users-selectors";
+import { fetchUsers } from "./redux/actions";
+import { ChangeTheme } from "./components/theme/ChangeTheme";
 
-function App() {
+export const App = () => {
+  const dispatch = useDispatch();
+
+  const users = useSelector(getUsers);
+  const view = useSelector(getView);
+  const searchResult = useSelector(getSearchResult);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="head-switchers">
+        <Search searchResult={searchResult} />
+        <ChangeView />
+        <ChangeTheme />
+      </div>
+
+      {view === "table" ? (
+        <TableData users={searchResult.length ? searchResult : users} />
+      ) : (
+        <CardView users={searchResult.length ? searchResult : users} />
+      )}
     </div>
   );
-}
-
-export default App;
+};

@@ -1,0 +1,33 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  max-width: 45%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  margin-top: 15px;
+}
+.avatar {
+  width: 30px;
+  margin-right: 20px;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.card-items {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.card-body {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.buttons-view button {
+  padding: 15px;
+}
