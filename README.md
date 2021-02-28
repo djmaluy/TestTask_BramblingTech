@@ -3,13 +3,13 @@
 - **To clone the project**
 
 ```
-git clone git@github.com:djmaluy/TestTask_BramblingTech
+git clone git@github.com:djmaluy/TestTask_BramblingTech.git
 ```
 
 - **Go to the folder**
 
 ```
-cd TestTask_BramblingTech.git
+cd TestTask_BramblingTech
 ```
 
 - **Execute command**
