@@ -6,7 +6,7 @@ const StyledApp = styled.div`
   color: ${(props) => props.theme.fontColor};
 `;
 
-export const ChangeTheme = () => {
+export const SwitchTheme = () => {
   const [theme, setTheme] = useState("light");
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");

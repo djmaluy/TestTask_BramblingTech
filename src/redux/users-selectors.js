@@ -7,3 +7,9 @@ export const getView = (state) => {
 export const getSearchResult = (state) => {
   return state.searchResult;
 };
+export const getLoading = (state) => {
+  return state.loading;
+};
+export const getError = (state) => {
+  return state.error;
+};

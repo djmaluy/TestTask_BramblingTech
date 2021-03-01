@@ -11,6 +11,9 @@ const initialState = {
   users: [],
   view: "table",
   searchResult: [],
+  loading: false,
+  error: null,
+  theme: "light",
 };
 
 export const UsersReducer = (state = initialState, action) => {
@@ -18,16 +21,19 @@ export const UsersReducer = (state = initialState, action) => {
     case START_FETCHING:
       return {
         ...state,
+        loading: true,
       };
     case FETCHING_SUCCESS:
       return {
         ...state,
         users: action.users,
+        loading: false,
       };
     case FETCHING_FAIL:
       return {
         ...state,
         error: action.error,
+        loading: false,
       };
     case IS_FAVOURITE:
       return {

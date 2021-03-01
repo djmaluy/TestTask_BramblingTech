@@ -12,3 +12,10 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.downloading {
+  margin-top: 15px;
+  color: black;
+  font-size: 26px;
+  text-align: center;
+  font-weight: bold;
+}

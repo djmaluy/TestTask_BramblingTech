@@ -5,33 +5,48 @@ import { CardView } from "./components/view/CardView";
 import { ChangeView } from "./components/view/ChangeView";
 import { Search } from "./components/search/Search";
 import { useSelector, useDispatch } from "react-redux";
-import { getSearchResult, getUsers, getView } from "./redux/users-selectors";
+import {
+  getSearchResult,
+  getUsers,
+  getView,
+  getLoading,
+  getError,
+} from "./redux/users-selectors";
 import { fetchUsers } from "./redux/actions";
-import { ChangeTheme } from "./components/theme/ChangeTheme";
+import { SwitchTheme } from "./components/theme/SwitchTheme";
 
 export const App = () => {
   const dispatch = useDispatch();
 
   const users = useSelector(getUsers);
   const view = useSelector(getView);
+  const loading = useSelector(getLoading);
+  const error = useSelector(getError);
   const searchResult = useSelector(getSearchResult);
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="container">
       <div className="head-switchers">
         <Search searchResult={searchResult} />
         <ChangeView />
-        <ChangeTheme />
+        <SwitchTheme />
       </div>
-
-      {view === "table" ? (
-        <TableData users={searchResult.length ? searchResult : users} />
+      {loading ? (
+        <div className="downloading">Загрузка...</div>
+      ) : error ? (
+        alert(error)
       ) : (
-        <CardView users={searchResult.length ? searchResult : users} />
+        <>
+          {view === "table" ? (
+            <TableData users={searchResult.length ? searchResult : users} />
+          ) : (
+            <CardView users={searchResult.length ? searchResult : users} />
+          )}
+        </>
       )}
     </div>
   );
